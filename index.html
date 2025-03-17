@@ -19,9 +19,11 @@
         <div id="tooltip" style="display:none"></div>
 
         <div id="controls">
-            Region: <select id="region" class="variable"></select>
-            Y-Axis: <select id="yVariable" class="variable"></select>
-            Timeline: <select id="timestep" class="variable"></select>
+            <div id="dropdowns">
+                Region: <select id="region" class="variable"></select>
+                &nbsp;&nbsp;Y-Axis: <select id="yVariable" class="variable"></select>
+                &nbsp;&nbsp;Time Period: <select id="timestep" class="variable"></select>
+            </div>
             <div id="slider"></div>
         </div>
 
@@ -32,6 +34,34 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/d3-simple-slider"></script>
     <script src="js/script.js"></script>
+
+    <br>
+
+    <h1>Write-Up</h1>
+    <p>
+        The data set that I used was Daily Weather in the U.S., 2017, which contains NOAA-provided weather measurements for the United States from 2017. I opted to let the user decide whether to analyze the temperature, snowfall, precipitation, or wind speed of each state. My visualization also allows the user to select a region in the United States to observe and how long of a time period to look at at one time. There is a slider so all of the data from 2017 can be observed, with the user sliding along to see the different date ranges. I built my visualization using the formatting from Labs 4 and 5 in CMSC 471.
+    </p>
+    <p>
+        I decided to let the user observe the temperature, snowfall, precipitation, and wind speed because they felt like the most important pieces of information about the weather and said the most about the conditions. I also added the time step dropdown to allow the user to observe the data close up or over a longer time period, depending on their analysis goals. Looking at the data for one month allows you to closely compare the weather in certain seasons across the regions, while looking at the data for 6 months allows you to see year-long trends all at once. The slider was necessary to allow all of the data points for these categories to be displayed, since they were spread from January 2017 to September 2017.
+    </p>
+    <p>
+        I considered a lot of different region divisions for the US, but ultimately decided on the 9 that I did because it split the 50 states into regions of 4-8 states, which made the visualization much easier to digest and analyze. I added a tool tip because even though the regions are broken down for less data on the screen, the lines are still rather dense, and I wanted the user to be able to easily tell what they are looking at with or without the key. It also allows the user to see the specific data point used in the line, which I felt was key information when making a line graph.
+    </p>
+    <p>
+        One choice I considered but didn't make was adding a transition to any change made on the slider. This ultimately looked bad and made the visualization harder to understand. The D3.js transition made it so that the lines moved vertically rather than horizontally, which made the data look completely different from the previous data on the slider and could lead to misunderstanding.  
+    </p>
+    <p>
+        My first step in this project was to get the basic lines to show up and the y-axis dropdown working. This involved taking the average of any points for the same state on the same date since the data set had points by station and not by state. Then, I was able to create the line graph with all of the states on the screen with 1 line per state. This looked terrible and was unreadable, so I decided to split it up by region. I added the drop-down and defined each region, adding the functionality. This made the data much less dense, but I was still looking at the entire year of data points. I added the slider and made the data show only 1 month at a time, but then decided to give the user the option to look at more months if desired.
+    </p>
+    <p>
+        Adding the time step dropdown took the most time out of the design process. I had several initial problems, including that when rescaling the slider, if the selected value was too late in the data set, switching from 1 month to 2 or 6 would display dates out of range with no data filling the graph. I fixed this by checking if the current selection on the slider was later than the latest date option for the new chosen time step and changing the value selected on the slider if needed.
+    </p>
+    <p>
+        My last step was adding the tool tip. I initially only showed the abbreviation for the state that the line represented on the tool tip, but I wanted to make the data much more clearly accessible. So, I adjusted the tool tip so that the closest data point to the selected spot on the line would be displayed along with the entire state name. Overall I spent around 8 hours developing this visualization.
+    </p>
+    <p>
+        I used AI in order to get the state names from each abbreviation. I prompted ChatGPT to create my stateNames list, so that I could easily convert the abbreviation to the full name in the tool tip and didn’t have to manually type out each of the 50 state names and abbreviations.
+    </p>
 </body>
 
 </html>
