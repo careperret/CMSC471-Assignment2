@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Data Visualization</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container"> <!-- Centers content and sets max width -->
+        <h1>Interactive Weather Data Visualization</h1>
+
+        <p>
+            Welcome to my interactive weather data visualization! Use the dropdowns to choose a region you'd like to explore, a factor (temperature, wind, snow, or precipitation) that you'd like to analyze, and the time step you'd like to see on the screen. Then use the slider to observe all the data we have available accross 2017. Enjoy!
+        </p>
+
+        <div id="tooltip" style="display:none"></div>
+
+        <div id="controls">
+            Region: <select id="region" class="variable"></select>
+            Y-Axis: <select id="yVariable" class="variable"></select>
+            Timeline: <select id="timestep" class="variable"></select>
+            <div id="slider"></div>
+        </div>
+
+        <div id="vis"></div> <!-- Holds the visualization (SVG) -->
+    </div>
+
+    <!-- Load D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/d3-simple-slider"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
